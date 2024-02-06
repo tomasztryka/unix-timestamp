@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix Timestamp Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #timestampContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h2>Unix Timestamp</h2>
+<div id="timestampContainer">
+    <p>Binary: <strong><span id="binary"></span></strong></p>
+    <p>Decimal: <span id="decimal"></span></p>
+    <p>Date: <span id="humanReadable"></span></p>
+</div>
+
+<script>
+    function updateTimestamp() {
+        const now = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
+        document.getElementById("binary").textContent = now.toString(2);
+        document.getElementById("decimal").textContent = now.toString(10);
+        document.getElementById("humanReadable").textContent = new Date(now * 1000).toLocaleString(['pl-PL', 'en-US']);
+    }
+
+    // Call updateTimestamp immediately to display the initial values
+    updateTimestamp();
+
+    // Set interval to call updateTimestamp every 1000 milliseconds (1 second)
+    setInterval(updateTimestamp, 1000);
+</script>
+</body>
+</html>
